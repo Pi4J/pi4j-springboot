@@ -7,7 +7,7 @@
     <parent>
         <groupId>com.pi4j</groupId>
         <artifactId>spring-boot-parent</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>3.0.0</version>
     </parent>
 
     <artifactId>pi4j-autoconfigure</artifactId>
@@ -20,29 +20,17 @@
             <groupId>com.pi4j</groupId>
             <artifactId>pi4j-core</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.pi4j</groupId>
-            <artifactId>pi4j-plugin-raspberrypi</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.pi4j</groupId>
-            <artifactId>pi4j-plugin-pigpio</artifactId>
-        </dependency>
 
         <!-- Spring Boot dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-autoconfigure</artifactId>
+            <artifactId>spring-boot-autoconfigure-processor</artifactId>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
-        </dependency>
-
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
         </dependency>
 
         <!-- Test dependencies -->

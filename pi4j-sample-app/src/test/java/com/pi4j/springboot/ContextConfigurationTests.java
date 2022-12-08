@@ -1,5 +1,6 @@
-package com.pi4j.springboot.configurations;
+package com.pi4j.springboot;
 
+import com.pi4j.autoconfigure.ContextAutoConfiguration;
 import com.pi4j.context.Context;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -7,6 +8,7 @@ import org.junit.jupiter.params.provider.ValueSource;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.test.context.runner.ApplicationContextRunner;
+import org.springframework.context.annotation.Import;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.boot.autoconfigure.AutoConfigurations.of;
@@ -55,6 +57,7 @@ public class ContextConfigurationTests {
 
     @SpringBootConfiguration
     @EnableAutoConfiguration
+    @Import( ContextAutoConfiguration.class )
     static class TestConfiguration { }
 
 }

@@ -1,0 +1,31 @@
+# Release with JReleaser
+# https://jreleaser.org/guide/latest/continuous-integration/github-actions.html
+
+name: Build and test with Java CI, Maven, and JReleaser
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+
+jobs:
+  release:
+    name: Build and test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      # Setup the Java version
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          java-version: 11
+          distribution: 'zulu'
+
+      # Build and run tests
+      - name: Maven package
+        run: |
+          mvn -ntp -B package

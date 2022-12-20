@@ -1,2 +1,5 @@
-# pi4j-springboot
-Pi4J Spring Boot Starter
+# Pi4J Spring Boot Starter
+
+## How to use
+
+This starter requires Java 17 or higher.

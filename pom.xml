@@ -23,7 +23,6 @@
 		<pi4j.version>2.2.1</pi4j.version>
 
 		<jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
-
 	</properties>
 
 	<modules>
@@ -37,9 +36,7 @@
 	</dependencies>
 
 	<dependencyManagement>
-
 		<dependencies>
-
 			<dependency>
 				<groupId>com.pi4j</groupId>
 				<artifactId>pi4j-core</artifactId>
@@ -62,17 +59,12 @@
 				<version>${pi4j.version}</version>
 				<scope>test</scope>
 			</dependency>
-
 		</dependencies>
-
 	</dependencyManagement>
 
 	<build>
-
 		<pluginManagement>
-
 			<plugins>
-
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -128,15 +120,9 @@
 								</rules>
 							</configuration>
 						</execution>
-
 					</executions>
-
 				</plugin>
-
 			</plugins>
-
 		</pluginManagement>
-
 	</build>
-
 </project>

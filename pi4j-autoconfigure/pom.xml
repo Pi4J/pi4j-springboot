@@ -14,7 +14,6 @@
     <name>pi4j-autoconfigure</name>
 
     <dependencies>
-
         <!-- Pi4J dependencies -->
         <dependency>
             <groupId>com.pi4j</groupId>
@@ -43,13 +42,10 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
 
     <dependencyManagement>
-
         <dependencies>
-
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -57,15 +53,11 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-
         </dependencies>
-
     </dependencyManagement>
 
     <build>
-
         <plugins>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -89,9 +81,6 @@
                     </excludes>
                 </configuration>
             </plugin>
-
         </plugins>
-
     </build>
-
 </project>

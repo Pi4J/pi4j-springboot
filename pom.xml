@@ -133,7 +133,7 @@
 									<maven-central>
 										<active>ALWAYS</active>
 										<url>https://oss.sonatype.org/service/local</url>
-										<closeRepository>false</closeRepository>
+										<closeRepository>true</closeRepository>
 										<releaseRepository>false</releaseRepository>
 										<stagingRepositories>target/staging-deploy</stagingRepositories>
 									</maven-central>
@@ -189,68 +189,4 @@
 			</build>
 		</profile>
 	</profiles>
-
-	<!--
-	<build>
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-				</plugin>
-
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-surefire-plugin</artifactId>
-				</plugin>
-
-				<plugin>
-					<groupId>org.jacoco</groupId>
-					<artifactId>jacoco-maven-plugin</artifactId>
-					<version>${jacoco-maven-plugin.version}</version>
-					<executions>
-						<execution>
-							<id>prepare-agent</id>
-							<phase>initialize</phase>
-							<goals>
-								<goal>prepare-agent</goal>
-							</goals>
-						</execution>
-
-						<execution>
-							<id>report</id>
-							<phase>verify</phase>
-							<goals>
-								<goal>report</goal>
-							</goals>
-						</execution>
-
-						<execution>
-							<id>jacoco-check</id>
-							<phase>verify</phase>
-							<goals>
-								<goal>check</goal>
-							</goals>
-							<configuration>
-								<haltOnFailure>false</haltOnFailure>
-								<rules>
-									<rule>
-										<element>PACKAGE</element>
-										<limits>
-											<limit>
-												<counter>LINE</counter>
-												<value>COVEREDRATIO</value>
-												<minimum>.85</minimum>
-											</limit>
-										</limits>
-									</rule>
-								</rules>
-							</configuration>
-						</execution>
-					</executions>
-				</plugin>
-			</plugins>
-		</pluginManagement>
-	</build>
-	-->
 </project>

@@ -1,2 +1,3 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  com.pi4j.autoconfigure.ContextAutoConfiguration
+  com.pi4j.autoconfigure.ContextAutoConfiguration,
+  com.pi4j.autoconfigure.Pi4jActuatorConfiguration

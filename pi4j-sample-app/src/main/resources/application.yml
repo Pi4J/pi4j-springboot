@@ -1,5 +1,12 @@
-
+management:
+  endpoints:
+    enabled-by-default: true
+    health:
+      show-details: always
+    web:
+      exposure:
+        include: '*'
+  
 spring:
-
   application:
     name: pi4j-sample-app

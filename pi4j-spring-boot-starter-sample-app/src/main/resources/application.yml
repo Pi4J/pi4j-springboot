@@ -6,7 +6,7 @@ management:
     web:
       exposure:
         include: '*'
-  
+
 spring:
   application:
-    name: pi4j-sample-app
+    name: pi4j-spring-boot-sample-app

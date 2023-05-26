@@ -1,4 +1,4 @@
-package com.pi4j.springboot;
+package com.pi4j.spring.boot.sample.app;
 
 import com.pi4j.context.Context;
 import org.junit.jupiter.api.Test;
@@ -23,18 +23,18 @@ public class ContextConfigurationTests {
 
 
     @ParameterizedTest
-    @ValueSource( strings = { "armv6l", "armv7l", "armv8l", "aarch64" } )
-    void whenOsArchIsProvided_verifyContextExists( String propertyName ) {
+    @ValueSource(strings = {"armv6l", "armv7l", "armv8l", "aarch64"})
+    void whenOsArchIsProvided_verifyContextExists(String propertyName) {
 
         this.contextRunner
-                        .withPropertyValues( String.format( "os.arch:%s", propertyName ) )
-                                .run( context -> {
+                .withPropertyValues(String.format("os.arch:%s", propertyName))
+                .run(context -> {
 
-                                    assertThat( context.getEnvironment().containsProperty( "os.arch" ) ).isTrue();
-                                    assertThat( context.getEnvironment().getProperty( "os.arch" ) ).isEqualTo( propertyName );
-                                    assertThat( context ).hasSingleBean( Context.class );
+                    assertThat(context.getEnvironment().containsProperty("os.arch")).isTrue();
+                    assertThat(context.getEnvironment().getProperty("os.arch")).isEqualTo(propertyName);
+                    assertThat(context).hasSingleBean(Context.class);
 
-                                });
+                });
 
     }
 
@@ -42,12 +42,12 @@ public class ContextConfigurationTests {
     void whenOsArchIsNotExpected_verifyContextDoesNotExist() {
 
         this.contextRunner
-                .withPropertyValues( "os.arch:other" )
-                .run( context -> {
+                .withPropertyValues("os.arch:other")
+                .run(context -> {
 
-                    assertThat( context.getEnvironment().containsProperty( "os.arch" ) ).isTrue();
-                    assertThat( context.getEnvironment().getProperty( "os.arch" ) ).isEqualTo( "other" );
-                    assertThat( context ).doesNotHaveBean( Context.class );
+                    assertThat(context.getEnvironment().containsProperty("os.arch")).isTrue();
+                    assertThat(context.getEnvironment().getProperty("os.arch")).isEqualTo("other");
+                    assertThat(context).doesNotHaveBean(Context.class);
 
                 });
 
@@ -55,6 +55,7 @@ public class ContextConfigurationTests {
 
     @SpringBootConfiguration
     @EnableAutoConfiguration
-    static class TestConfiguration { }
+    static class TestConfiguration {
+    }
 
 }

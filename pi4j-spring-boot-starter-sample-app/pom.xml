@@ -10,8 +10,8 @@
         <version>0.0.1.ea</version>
     </parent>
 
-    <artifactId>pi4j-sample-app</artifactId>
-    <name>pi4j-sample-app</name>
+    <artifactId>pi4j-spring-boot-starter-sample-app</artifactId>
+    <name>Pi4J Spring Boot Starter Sample Application</name>
 
     <properties>
         <maven.javadoc.skip>true</maven.javadoc.skip>

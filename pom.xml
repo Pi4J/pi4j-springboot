@@ -21,7 +21,7 @@
         <java.version>17</java.version>
         <spring-boot.version>3.1.0</spring-boot.version>
         <pi4j.version>2.3.0</pi4j.version>
-        <pi4j.boardinfo.version>0.1.0</pi4j.boardinfo.version>
+        <pi4j.boardinfo.version>0.2.0</pi4j.boardinfo.version>
 
         <!-- Plugins -->
         <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
@@ -37,7 +37,7 @@
     <modules>
         <module>pi4j-spring-boot</module>
         <module>pi4j-spring-boot-starter</module>
-        <module>pi4j-sample-app</module>
+        <module>pi4j-spring-boot-starter-sample-app</module>
     </modules>
 
     <dependencies>

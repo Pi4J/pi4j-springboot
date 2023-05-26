@@ -1,5 +1,13 @@
 # Pi4J Spring Boot Starter
 
+![GitHub Actions build state](https://github.com/Pi4J/pi4j-springboot/actions/workflows/build.yml/badge.svg) [![License](https://img.shields.io/github/license/pi4j/pi4j-v2)](http://www.apache.org/licenses/LICENSE-2.0)
+
+[![Chat on Slack](https://img.shields.io/badge/Chat-on%20Slack-blue)](https://join.slack.com/t/pi4j/shared_invite/zt-1ttqt8wgj-E6t69qaLrNuCMPLiYnBCsg)
+[![Site](https://img.shields.io/badge/Website-pi4j.com-green)](https://pi4j.com)
+[![Twitter Follow](https://img.shields.io/twitter/follow/pi4j?label=Pi4J&style=social)](https://twitter.com/pi4j)
+
+---
+
 This project provides a Spring Boot Starter to use the Pi4J V2 library in your Spring Boot project.
 
 ## How to use
@@ -24,7 +32,7 @@ This project provides a Spring Boot Starter to use the Pi4J V2 library in your S
 
 ## Thanks to
 
-This project was started by Daniel Frey and got further improved by DaShaun Carter during a view live-coding sessions:
+This project was started by Daniel Frey and got further improved by DaShaun Carter during a few live-coding sessions:
 
 1. TODO link to first Twitch
 2. [Working on Pi4J Spring Boot](https://www.twitch.tv/videos/1828406758)

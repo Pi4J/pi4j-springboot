@@ -21,7 +21,7 @@
         <java.version>17</java.version>
         <spring-boot.version>3.1.0</spring-boot.version>
         <pi4j.version>2.3.0</pi4j.version>
-        <pi4j.boardinfo.version>0.0.2.ea</pi4j.boardinfo.version>
+        <pi4j.boardinfo.version>0.1.0</pi4j.boardinfo.version>
 
         <!-- Plugins -->
         <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
@@ -60,6 +60,11 @@
             <dependency>
                 <groupId>com.pi4j</groupId>
                 <artifactId>pi4j-plugin-pigpio</artifactId>
+                <version>${pi4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.pi4j</groupId>
+                <artifactId>pi4j-plugin-linuxfs</artifactId>
                 <version>${pi4j.version}</version>
             </dependency>
             <dependency>

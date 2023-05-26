@@ -31,6 +31,10 @@
             <groupId>com.pi4j</groupId>
             <artifactId>pi4j-plugin-pigpio</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.pi4j</groupId>
+            <artifactId>pi4j-plugin-linuxfs</artifactId>
+        </dependency>
 
         <!-- Spring Boot dependencies -->
         <dependency>

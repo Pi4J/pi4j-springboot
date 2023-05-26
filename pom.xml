@@ -14,7 +14,7 @@
     <groupId>com.pi4j</groupId>
     <artifactId>pi4j-springboot</artifactId>
     <version>0.0.1.ea</version>
-    <name>pi4j-springboot</name>
+    <name>Pi4J Spring Boot Project</name>
     <packaging>pom</packaging>
 
     <properties>

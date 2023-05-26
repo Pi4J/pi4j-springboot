@@ -25,7 +25,7 @@
         <!-- Just adding the pi4j-starter to a very simple Spring Boot app -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>pi4j-starter</artifactId>
+            <artifactId>pi4j-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
 

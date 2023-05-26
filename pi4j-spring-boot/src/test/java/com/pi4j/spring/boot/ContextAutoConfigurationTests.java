@@ -1,4 +1,4 @@
-package com.pi4j.autoconfigure;
+package com.pi4j.spring.boot;
 
 import com.pi4j.context.Context;
 import org.junit.jupiter.api.Test;
@@ -21,32 +21,32 @@ public class ContextAutoConfigurationTests {
     void whenOsArchIsNotExpected_verifyContextDoesNotExist() {
 
         this.contextRunner
-                .withPropertyValues( "os.arch:other")
-                .run( context -> assertThat( context ).doesNotHaveBean( Context.class ) );
+                .withPropertyValues("os.arch:other")
+                .run(context -> assertThat(context).doesNotHaveBean(Context.class));
     }
 
     @Test
     void whenOsArchIsArmv6l_verifyContextExists() {
 
         this.contextRunner
-                .withPropertyValues( "os.arch:armv6l" )
-                .run( context -> assertThat( context ).hasSingleBean( Context.class ) );
+                .withPropertyValues("os.arch:armv6l")
+                .run(context -> assertThat(context).hasSingleBean(Context.class));
     }
 
     @Test
     void whenOsArchIsArmv7l_verifyContextExists() {
 
         this.contextRunner
-                .withPropertyValues( "os.arch:armv7l" )
-                .run( context -> assertThat( context ).hasSingleBean( Context.class ) );
+                .withPropertyValues("os.arch:armv7l")
+                .run(context -> assertThat(context).hasSingleBean(Context.class));
     }
 
     @Test
     void whenOsArchIsArmv8l_verifyContextExists() {
 
         this.contextRunner
-                .withPropertyValues( "os.arch:armv8l" )
-                .run( context -> assertThat( context ).hasSingleBean( Context.class ) );
+                .withPropertyValues("os.arch:armv8l")
+                .run(context -> assertThat(context).hasSingleBean(Context.class));
     }
 
     /*
@@ -56,8 +56,8 @@ public class ContextAutoConfigurationTests {
     void whenOsArchIsAarch64_verifyContextExists() {
 
         this.contextRunner
-                .withPropertyValues( "os.arch:aarch64" )
-                .run( context -> assertThat( context ).hasSingleBean( Context.class ) );
+                .withPropertyValues("os.arch:aarch64")
+                .run(context -> assertThat(context).hasSingleBean(Context.class));
     }
 
 }

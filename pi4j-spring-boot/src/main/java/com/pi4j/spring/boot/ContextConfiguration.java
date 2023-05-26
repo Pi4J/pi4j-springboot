@@ -1,4 +1,4 @@
-package com.pi4j.autoconfigure;
+package com.pi4j.spring.boot;
 
 import com.pi4j.Pi4J;
 import com.pi4j.context.Context;
@@ -8,16 +8,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration( proxyBeanMethods = false )
-@ConditionalOnClass( Context.class )
+@Configuration(proxyBeanMethods = false)
+@ConditionalOnClass(Context.class)
 public class ContextConfiguration {
 
     @Bean
-    @Conditional( ContextConditions.class )
+    @Conditional(ContextConditions.class)
     @ConditionalOnMissingBean
     Context context() {
-
         return Pi4J.newAutoContext();
     }
-
 }

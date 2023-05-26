@@ -10,8 +10,8 @@
         <version>0.0.1.ea</version>
     </parent>
 
-    <artifactId>pi4j-starter</artifactId>
-    <name>pi4j-starter</name>
+    <artifactId>pi4j-spring-boot-starter</artifactId>
+    <name>Pi4J Spring Boot Starter</name>
 
     <properties>
         <jacoco.skip>true</jacoco.skip>
@@ -21,7 +21,7 @@
         <!-- Library dependencies -->
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>pi4j-autoconfigure</artifactId>
+            <artifactId>pi4j-spring-boot</artifactId>
             <version>${project.version}</version>
         </dependency>
 

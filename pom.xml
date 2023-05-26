@@ -35,8 +35,8 @@
     </scm>
 
     <modules>
-        <module>pi4j-autoconfigure</module>
-        <module>pi4j-starter</module>
+        <module>pi4j-spring-boot</module>
+        <module>pi4j-spring-boot-starter</module>
         <module>pi4j-sample-app</module>
     </modules>
 

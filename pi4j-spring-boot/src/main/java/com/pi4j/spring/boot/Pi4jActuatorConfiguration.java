@@ -1,4 +1,4 @@
-package com.pi4j.autoconfigure;
+package com.pi4j.spring.boot;
 
 import com.pi4j.boardinfo.model.DetectedBoard;
 import com.pi4j.boardinfo.util.BoardModelDetection;
@@ -28,13 +28,14 @@ public class Pi4jActuatorConfiguration implements InfoContributor {
         this.detectedBoard = BoardModelDetection.getDetectedBoard();
     }
 
-
     @Override
     public void contribute(Builder builder) {
         builder.withDetail("os", detectedBoard.getOperatingSystem());
         builder.withDetail("board", detectedBoard.getBoardModel());
-        builder.withDetail("pi4j", context.registry().all());
+        builder.withDetail("java", detectedBoard.getJavaInfo());
+        builder.withDetail("pi4jPlatforms", context.platforms());
+        builder.withDetail("pi4jDefaultPlatform", context.platform());
+        builder.withDetail("pi4jProviders", context.providers());
+        builder.withDetail("pi4jRegistry", context.registry());
     }
-
-
 }

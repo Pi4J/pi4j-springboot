@@ -10,8 +10,8 @@
         <version>0.0.1.ea</version>
     </parent>
 
-    <artifactId>pi4j-autoconfigure</artifactId>
-    <name>pi4j-autoconfigure</name>
+    <artifactId>pi4j-spring-boot</artifactId>
+    <name>Pi4J Spring Boot</name>
 
     <dependencies>
         <!-- Pi4J dependencies -->

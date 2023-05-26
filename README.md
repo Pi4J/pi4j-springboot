@@ -46,14 +46,26 @@ $ curl -s "https://get.sdkman.io" | bash
 $ sdk install java 17.0.7-zulu
 ```
 
-* Get this project from GitHub.
+* Get this project from GitHub and package it.
 
 ```shell
 $ git clone https://github.com/Pi4J/pi4j-springboot.git
 $ cd pi4j-springboot
 $ mvn package
+```
+
+* Run it as sudo to make sure Pi4J starts correctly.
+
+```shell
 $ sudo java -jar pi4j-spring-boot-starter-sample-app/target/pi4j-spring-boot-starter-sample-app-0.0.1.ea.jar 
 
+# Or when installed with SDKMAN
+$ sudo ~/.sdkman/candidates/java/19.0.2-zulu/bin/java -jar pi4j-spring-boot-starter-sample-app/target/pi4j-spring-boot-starter-sample-app-0.0.1.ea.jar
+```
+
+* Check the output of the application:
+
+```shell
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
 ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \

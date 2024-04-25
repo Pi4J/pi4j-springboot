@@ -12,10 +12,16 @@ import org.springframework.context.annotation.Configuration;
 @ConditionalOnClass(Context.class)
 public class ContextConfiguration {
 
+    private final Context pi4j;
+
+    public ContextConfiguration() {
+        this.pi4j = Pi4J.newAutoContext();
+    }
+
     @Bean
     @Conditional(ContextConditions.class)
     @ConditionalOnMissingBean
     Context context() {
-        return Pi4J.newAutoContext();
+        return pi4j;
     }
 }

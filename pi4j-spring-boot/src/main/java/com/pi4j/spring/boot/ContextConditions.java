@@ -9,6 +9,9 @@ public class ContextConditions extends AnyNestedCondition {
         super(ConfigurationPhase.REGISTER_BEAN);
     }
 
+    /**
+     * TODO are these still needed? Can't we use Pi4jActuatorConfiguration.boardInfo ?
+     */
     @ConditionalOnProperty(prefix = "os", name = "arch", havingValue = "armv6l")
     static class Armv6l {
     }

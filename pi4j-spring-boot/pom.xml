@@ -21,10 +21,6 @@
         </dependency>
         <dependency>
             <groupId>com.pi4j</groupId>
-            <artifactId>pi4j-board-info</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.pi4j</groupId>
             <artifactId>pi4j-plugin-raspberrypi</artifactId>
         </dependency>
         <dependency>
@@ -34,6 +30,10 @@
         <dependency>
             <groupId>com.pi4j</groupId>
             <artifactId>pi4j-plugin-linuxfs</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.pi4j</groupId>
+            <artifactId>pi4j-plugin-gpiod</artifactId>
         </dependency>
 
         <!-- Spring Boot dependencies -->

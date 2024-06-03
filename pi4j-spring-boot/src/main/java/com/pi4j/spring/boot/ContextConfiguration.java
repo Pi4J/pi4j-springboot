@@ -29,7 +29,7 @@ public class ContextConfiguration {
 
     public ContextConfiguration() {
         try {
-            if (            BoardInfoHelper.current().getBoardModel() == BoardModel.UNKNOWN) {
+            if (BoardInfoHelper.current().getBoardModel() == BoardModel.UNKNOWN) {
                 this.pi4j = Pi4J.newContextBuilder()
                         .add(new MockPlatform())
                         .add(MockAnalogInputProvider.newInstance(),
@@ -42,9 +42,9 @@ public class ContextConfiguration {
                                 MockDigitalOutputProvider.newInstance())
                         .build();
             } else {
-                        this.pi4j = Pi4J.newAutoContext();
+                this.pi4j = Pi4J.newAutoContext();
             }
-        } catch (Error e) { // TODO Temporary fix for https://github.com/Pi4J/pi4j-v2/issues/354
+        } catch (Error e) {
             logger.error("Pi4J library failed to load: {}", e.getMessage());
         }
     }

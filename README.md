@@ -93,99 +93,33 @@ $ sudo ~/.sdkman/candidates/java/19.0.2-zulu/bin/java -jar pi4j-spring-boot-star
 ```
 
 * Open browser with http://{RASPBERRY_PI_IP_ADDRESS}:8080/actuator/info
-* Actual output on a Raspberry Pi 4 (but truncated the pins-section):
-
-```json
-{
-  "os": {
-    "name": "Linux",
-    "version": "6.1.21-v8+",
-    "architecture": "aarch64"
-  },
-  "board": {
-    "label": "Raspberry Pi 4 Model B",
-    "boardType": {},
-    "boardCodes": [
-      "a03111",
-      "b03111",
-      "b03112",
-      "b03114",
-      "b03115",
-      "c03111",
-      "c03112",
-      "c03114",
-      "c03115",
-      "d03114",
-      "d03115"
-    ],
-    "model": {
-      "label": "Model B",
-      "description": "With ethernet connector"
-    },
-    "headerVersion": {
-      "label": "Type 3",
-      "description": "Used on Model A+, B+, Pi Zero, Pi Zero W, Pi2B, Pi3B, Pi4B",
-      "headerPins": [
-        {
-          "label": "40pin header",
-          "pins": [
-            {
-              "pinNumber": 1,
-              "pinType": {
-                "label": "Power",
-                "color": 10027008
-              },
-              "name": "3.3 VDC",
-              "remark": ""
-            },
-            ...
-          ]
-        }
-      ]
-    },
-    "releaseDate": "2019-06-24",
-    "soc": {
-      "instructionSet": {
-        "label": "ARMv8"
-      }
-    },
-    "cpu": {
-      "label": "Cortex-A72"
-    },
-    "numberOfCpu": 4,
-    "versionsProcessorSpeedInMhz": [
-      1500,
-      1800
-    ],
-    "versionsMemoryInKb": [
-      1048576,
-      2097152,
-      4194304,
-      8388608
-    ],
-    "remarks": [],
-    "name": "MODEL_4_B",
-    "versionsMemoryInMb": [
-      1024,
-      2048,
-      4096,
-      8192
-    ],
-    "versionsMemoryInGb": [
-      1,
-      2,
-      4,
-      8
-    ]
-  },
-  "java": {
-    "version": "17.0.6",
-    "runtime": "17.0.6+10-Debian-1deb11u1",
-    "vendor": "Debian"
-  },
-  "pi4jRegistry": {}
-}
-```
+  * Output on a PC:
+    pins-section):
+    ```json
+    {
+        "os.name":"Mac OS X",
+        "os.architecture":"aarch64",
+        "os.version":"14.5",
+        "board.name":"UNKNOWN",
+        "board.description":"Unknown",
+        "board.model.label":"Unknown",
+        "board.cpu.label":"Unknown",
+        "board.soc":"UNKNOWN",
+        "java.version":"22",
+        "java.runtime":"22+36",
+        "java.vendor":"Azul Systems, Inc.",
+        "java.vendor.version":"Zulu22.28+91-CA",
+        "reading.volt.value":0.0,
+        "reading.temperature.celsius":0.0,
+        "reading.temperature.fahrenheit":32.0,
+        "reading.uptime":"16:26  up 13 days,  3:35, 1 user, load averages: 2.63 3.45 3.32",
+        "pi4jRegistry":{}
+    }
+    ```
+  * Output on a Raspberry Pi 4 (but truncated the pins-section):
+    ```json
+    TODO
+    ```
 
 ## Notes
 

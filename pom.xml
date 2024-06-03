@@ -75,7 +75,6 @@
                 <groupId>com.pi4j</groupId>
                 <artifactId>pi4j-plugin-mock</artifactId>
                 <version>${pi4j.version}</version>
-                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

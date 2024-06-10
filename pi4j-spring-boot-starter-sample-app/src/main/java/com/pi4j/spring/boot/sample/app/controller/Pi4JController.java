@@ -18,7 +18,7 @@ public class Pi4JController {
 
     public Pi4JController(@Autowired Context pi4j) {
         // LED example is based on https://www.pi4j.com/getting-started/minimal-example-application/
-        pi4j.digitalOutput().create(PIN_LED);
+        led = pi4j.digitalOutput().create(PIN_LED);
     }
 
     @GetMapping("/led/{status}")

@@ -19,23 +19,36 @@ public class Pi4JService {
     private final LcdDisplay lcd;
 
     public Pi4JService(@Autowired Context pi4j) {
-        // LED example is based on https://www.pi4j.com/getting-started/minimal-example-application/
-        led = pi4j.digitalOutput().create(PIN_LED);
-        logger.info("LED initialized on pin {}", PIN_LED);
+        try {
+            // LED example is based on https://www.pi4j.com/getting-started/minimal-example-application/
+            led = pi4j.digitalOutput().create(PIN_LED);
+            logger.info("LED initialized on pin {}", PIN_LED);
+        } catch (Exception e) {
+            logger.error("Error while initializing the LED: {}", e.getMessage());
+        }
 
-        // Button example is based on https://www.pi4j.com/getting-started/minimal-example-application/
-        var buttonConfig = DigitalInput.newConfigBuilder(pi4j)
-                .id("button")
-                .name("Press button")
-                .address(PIN_BUTTON)
-                .pull(PullResistance.PULL_DOWN)
-                .debounce(3000L);
-        button = pi4j.create(buttonConfig);
-        button.addListener(e -> handleButtonChange(e));
-        logger.info("Button initialized on pin {}", PIN_BUTTON);
+        try {
+            // Button example is based on https://www.pi4j.com/getting-started/minimal-example-application/
+            var buttonConfig = DigitalInput.newConfigBuilder(pi4j)
+                    .id("button")
+                    .name("Press button")
+                    .address(PIN_BUTTON)
+                    .pull(PullResistance.PULL_DOWN)
+                    .debounce(3000L);
+            button = pi4j.create(buttonConfig);
+            button.addListener(e -> handleButtonChange(e));
+            logger.info("Button initialized on pin {}", PIN_BUTTON);
+        } catch (Exception e) {
+            logger.error("Error while initializing the button: {}", e.getMessage());
+        }
 
-        // LCD example is based on https://www.pi4j.com/examples/components/lcddisplay/
-        lcd = new LcdDisplay(pi4j, 2, 16);
+        try {
+            // LCD example is based on https://www.pi4j.com/examples/components/lcddisplay/
+            // Make sure to enable I2C with `sudo raspi-config` > `Interface Options`
+            lcd = new LcdDisplay(pi4j, 2, 16);
+        } catch (Exception e) {
+            logger.error("Error while initializing the LCD: {}", e.getMessage());
+        }
     }
 
     private void handleButtonChange(DigitalStateChangeEvent e) {

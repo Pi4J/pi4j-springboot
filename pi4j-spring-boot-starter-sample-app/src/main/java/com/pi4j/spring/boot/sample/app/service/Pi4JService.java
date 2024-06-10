@@ -14,9 +14,9 @@ public class Pi4JService {
     private static final Logger logger = LoggerFactory.getLogger(Pi4JService.class);
     private static final int PIN_LED = 22; // PIN 15 = BCM 22
     private static final int PIN_BUTTON = 24; // PIN 18 = BCM 24
-    private final DigitalOutput led;
-    private final DigitalInput button;
-    private final LcdDisplay lcd;
+    private DigitalOutput led = null;
+    private DigitalInput button = null;
+    private LcdDisplay lcd = null;
 
     public Pi4JService(@Autowired Context pi4j) {
         try {
@@ -56,6 +56,11 @@ public class Pi4JService {
     }
 
     public boolean setLedState(Boolean state) {
+        if (led == null) {
+            logger.error("LED is not initialized");
+            return false;
+        }
+
         try {
             led.state(state ? DigitalState.HIGH : DigitalState.LOW);
             logger.info("LED state is set to {}", state);
@@ -66,7 +71,21 @@ public class Pi4JService {
         return false;
     }
 
+    public DigitalState getButtonState() {
+        if (button == null) {
+            logger.error("Button is not initialized");
+            return DigitalState.LOW;
+        }
+
+        return button.state();
+    }
+
     public boolean setLcdText(Integer line, String text) {
+        if (lcd == null) {
+            logger.error("LCD is not initialized");
+            return false;
+        }
+
         try {
             lcd.displayLineOfText(text, line);
             logger.info("LCD text on line {} is set to {}", line, text);
@@ -75,9 +94,5 @@ public class Pi4JService {
             logger.error("Error while changing the LCD text: {}", e.getMessage());
         }
         return false;
-    }
-
-    public DigitalState getButtonState() {
-        return button.state();
     }
 }

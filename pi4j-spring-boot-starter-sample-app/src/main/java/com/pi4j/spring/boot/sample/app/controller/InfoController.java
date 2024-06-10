@@ -11,7 +11,7 @@ public class InfoController {
     @GetMapping()
     public String getInfo() {
         return """
-                Available URLS: 
+                Available URLs: 
                 <ul>
                     <li><a href="/actuator/health" target="_blank">Actuator Health</a></li>
                     <li><a href="/actuator/info" target="_blank">Actuator Info</a></li>

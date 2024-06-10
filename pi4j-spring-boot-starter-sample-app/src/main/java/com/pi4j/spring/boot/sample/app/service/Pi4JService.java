@@ -1,9 +1,8 @@
 package com.pi4j.spring.boot.sample.app.service;
 
 import com.pi4j.context.Context;
-import com.pi4j.io.gpio.digital.DigitalInput;
-import com.pi4j.io.gpio.digital.DigitalStateChangeEvent;
-import com.pi4j.io.gpio.digital.PullResistance;
+import com.pi4j.io.gpio.digital.*;
+import com.pi4j.spring.boot.sample.app.lcd.LcdDisplay;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,9 +12,17 @@ import org.springframework.stereotype.Service;
 public class Pi4JService {
 
     private static final Logger logger = LoggerFactory.getLogger(Pi4JService.class);
+    private static final int PIN_LED = 22; // PIN 15 = BCM 22
     private static final int PIN_BUTTON = 24; // PIN 18 = BCM 24
+    private final DigitalOutput led;
+    private final DigitalInput button;
+    private final LcdDisplay lcd;
 
     public Pi4JService(@Autowired Context pi4j) {
+        // LED example is based on https://www.pi4j.com/getting-started/minimal-example-application/
+        led = pi4j.digitalOutput().create(PIN_LED);
+        logger.info("LED initialized on pin {}", PIN_LED);
+
         // Button example is based on https://www.pi4j.com/getting-started/minimal-example-application/
         var buttonConfig = DigitalInput.newConfigBuilder(pi4j)
                 .id("button")
@@ -23,12 +30,41 @@ public class Pi4JService {
                 .address(PIN_BUTTON)
                 .pull(PullResistance.PULL_DOWN)
                 .debounce(3000L);
-        var button = pi4j.create(buttonConfig);
+        button = pi4j.create(buttonConfig);
         button.addListener(e -> handleButtonChange(e));
         logger.info("Button initialized on pin {}", PIN_BUTTON);
+
+        // LCD example is based on https://www.pi4j.com/examples/components/lcddisplay/
+        lcd = new LcdDisplay(pi4j, 2, 16);
     }
 
     private void handleButtonChange(DigitalStateChangeEvent e) {
         logger.info("Button state changed to {}", e.state());
+    }
+
+    public boolean setLedState(Boolean state) {
+        try {
+            led.state(state ? DigitalState.HIGH : DigitalState.LOW);
+            logger.info("LED state is set to {}", state);
+            return true;
+        } catch (Exception e) {
+            logger.error("Error while changing the LED status: {}", e.getMessage());
+        }
+        return false;
+    }
+
+    public boolean setLcdText(Integer line, String text) {
+        try {
+            lcd.displayLineOfText(text, line);
+            logger.info("LCD text on line {} is set to {}", line, text);
+            return true;
+        } catch (Exception e) {
+            logger.error("Error while changing the LCD text: {}", e.getMessage());
+        }
+        return false;
+    }
+
+    public DigitalState getButtonState() {
+        return button.state();
     }
 }

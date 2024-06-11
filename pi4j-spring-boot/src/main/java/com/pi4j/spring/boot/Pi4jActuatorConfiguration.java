@@ -37,17 +37,20 @@ public class Pi4jActuatorConfiguration implements InfoContributor {
         builder.withDetail("os.architecture", os.getArchitecture());
         builder.withDetail("os.version", os.getVersion());
         builder.withDetail("os.architecture", os.getArchitecture());
+
         var boardModel = boardInfo.getBoardModel();
         builder.withDetail("board.name", boardModel.getName());
         builder.withDetail("board.description", boardModel.getLabel());
         builder.withDetail("board.model.label", boardModel.getModel().getLabel());
         builder.withDetail("board.cpu.label", boardModel.getCpu().getLabel());
         builder.withDetail("board.soc", boardModel.getSoc().name());
+
         var java = boardInfo.getJavaInfo();
         builder.withDetail("java.version", java.getVersion());
         builder.withDetail("java.runtime", java.getRuntime());
         builder.withDetail("java.vendor", java.getVendor());
         builder.withDetail("java.vendor.version", java.getVendorVersion());
+
         var boardReading = BoardInfoHelper.getBoardReading();
         builder.withDetail("reading.volt.value", boardReading.getVoltValue());
         builder.withDetail("reading.temperature.celsius", boardReading.getTemperatureInCelsius());
@@ -56,26 +59,50 @@ public class Pi4jActuatorConfiguration implements InfoContributor {
 
         try {
             // TODO https://github.com/Pi4J/pi4j-springboot/issues/11
-            //builder.withDetail("pi4jPlatforms", context.platforms().all());
-        } catch (Exception ex) {
-            logger.error("Could not return the Pi4J Platforms: {}", ex.getMessage());
-        }
-        try {
-            // TODO https://github.com/Pi4J/pi4j-springboot/issues/11
-            //builder.withDetail("pi4jDefaultPlatform", context.platform());
+            builder.withDetail("platform.name", context.platform().name());
+            builder.withDetail("platform.value", context.platform().describe().value().toString());
         } catch (Exception ex) {
             logger.error("Could not return the Pi4J Default Platform: {}", ex.getMessage());
         }
+
         try {
             // TODO https://github.com/Pi4J/pi4j-springboot/issues/11
-            //builder.withDetail("pi4jProviders", context.providers().all());
+            for (var entry : context.platforms().all().entrySet()) {
+                builder.withDetail("platform." + getAsKeyName(entry.getKey()) + ".name", entry.getValue().name());
+                builder.withDetail("platform." + getAsKeyName(entry.getKey()) + ".description", entry.getValue().description());
+                builder.withDetail("platform." + getAsKeyName(entry.getKey()) + ".value", entry.getValue().describe().value().toString());
+            }
+        } catch (Exception ex) {
+            logger.error("Could not return the Pi4J Platforms: {}", ex.getMessage());
+        }
+
+        try {
+            // TODO https://github.com/Pi4J/pi4j-springboot/issues/11
+            for (var entry : context.providers().all().entrySet()) {
+                builder.withDetail("provider." + getAsKeyName(entry.getKey()) + ".name", entry.getValue().name());
+                builder.withDetail("provider." + getAsKeyName(entry.getKey()) + ".description", entry.getValue().description());
+                builder.withDetail("provider." + getAsKeyName(entry.getKey()) + ".type.name", entry.getValue().type().name());
+            }
         } catch (Exception ex) {
             logger.error("Could not return the Pi4J Providers: {}", ex.getMessage());
         }
+
         try {
-            builder.withDetail("pi4jRegistry", context.registry().all());
+            for (var entry : context.registry().all().entrySet()) {
+                builder.withDetail("registry." + getAsKeyName(entry.getKey()) + ".name", entry.getValue().name());
+                builder.withDetail("registry." + getAsKeyName(entry.getKey()) + ".config.name", entry.getValue().config().name());
+                builder.withDetail("registry." + getAsKeyName(entry.getKey()) + ".config.name", entry.getValue().config().platform());
+                builder.withDetail("registry." + getAsKeyName(entry.getKey()) + ".config.provider", entry.getValue().config().provider());
+                builder.withDetail("registry." + getAsKeyName(entry.getKey()) + ".type.name", entry.getValue().type().name());
+                builder.withDetail("registry." + getAsKeyName(entry.getKey()) + ".description", entry.getValue().description());
+                builder.withDetail("registry." + getAsKeyName(entry.getKey()) + ".value", entry.getValue().describe().value().toString());
+            }
         } catch (Exception ex) {
             logger.error("Could not return the Pi4J Registry: {}", ex.getMessage());
         }
+    }
+
+    private String getAsKeyName(String key) {
+        return key.toLowerCase().trim().replace(" ", "-");
     }
 }

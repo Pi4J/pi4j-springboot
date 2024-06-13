@@ -6,10 +6,12 @@ import com.pi4j.spring.boot.sample.app.lcd.LcdDisplay;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.info.Info;
+import org.springframework.boot.actuate.info.InfoContributor;
 import org.springframework.stereotype.Service;
 
 @Service
-public class Pi4JService {
+public class Pi4JService implements InfoContributor {
 
     private static final Logger logger = LoggerFactory.getLogger(Pi4JService.class);
     private static final int PIN_LED = 22; // PIN 15 = BCM 22
@@ -49,6 +51,12 @@ public class Pi4JService {
         } catch (Exception e) {
             logger.error("Error while initializing the LCD: {}", e.getMessage());
         }
+    }
+
+    @Override
+    public void contribute(Info.Builder builder) {
+        builder.withDetail("pi4j.status.led", led.state());
+        builder.withDetail("pi4j.status.button", button.state());
     }
 
     private void handleButtonChange(DigitalStateChangeEvent e) {

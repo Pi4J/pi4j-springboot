@@ -58,7 +58,7 @@ public class Pi4jActuatorConfiguration implements InfoContributor {
         builder.withDetail("reading.uptime", boardReading.getUptimeInfo().trim());
 
         try {
-            builder.withDetail("platform.name", context.platform().name());
+            builder.withDetail("platform.current", context.platform().name());
         } catch (Exception ex) {
             logger.error("Could not return the Pi4J Default Platform: {}", ex.getMessage());
         }

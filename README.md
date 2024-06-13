@@ -66,59 +66,62 @@ $ sudo ~/.sdkman/candidates/java/19.0.2-zulu/bin/java -jar pi4j-spring-boot-star
 * Check the output of the application:
 
 ```shell
-  .   ____          _            __ _ _
- /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
-( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
- \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
-  '  |____| .__|_| |_|_| |_\__, | / / / /
- =========|_|==============|___/=/_/_/_/
- :: Spring Boot ::                (v3.1.0)
 
-2023-05-26T15:11:12.614+02:00  INFO 2148 --- [           main] c.p.spring.boot.sample.app.Application   : Starting Application v0.0.1.ea using Java 17.0.6 with PID 2148 (/home/pi/pi4j-springboot/pi4j-spring-boot-starter-sample-app/target/pi4j-spring-boot-starter-sample-app-0.0.1.ea.jar started by root in /home/pi/pi4j-springboot)
-2023-05-26T15:11:12.630+02:00  INFO 2148 --- [           main] c.p.spring.boot.sample.app.Application   : No active profile set, falling back to 1 default profile: "default"
-2023-05-26T15:11:20.607+02:00  INFO 2148 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
-2023-05-26T15:11:20.665+02:00  INFO 2148 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-05-26T15:11:20.668+02:00  INFO 2148 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
-2023-05-26T15:11:21.078+02:00  INFO 2148 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-05-26T15:11:21.090+02:00  INFO 2148 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 7946 ms
-2023-05-26T15:11:23.861+02:00  INFO 2148 --- [           main] com.pi4j.Pi4J                            : New auto context
-2023-05-26T15:11:23.862+02:00  INFO 2148 --- [           main] com.pi4j.Pi4J                            : New context builder
-2023-05-26T15:11:24.486+02:00  INFO 2148 --- [           main] c.p.p.impl.DefaultRuntimePlatforms       : adding platform to managed platform map [id=raspberrypi; name=RaspberryPi Platform; priority=5; class=com.pi4j.plugin.raspberrypi.platform.RaspberryPiPlatform]
-2023-05-26T15:11:26.134+02:00  INFO 2148 --- [           main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 14 endpoint(s) beneath base path '/actuator'
-2023-05-26T15:11:26.723+02:00  INFO 2148 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
-2023-05-26T15:11:26.940+02:00  INFO 2148 --- [           main] c.p.spring.boot.sample.app.Application   : Started Application in 16.876 seconds (process running for 19.337)
-2023-05-26T15:11:39.543+02:00  INFO 2148 --- [nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-05-26T15:11:39.544+02:00  INFO 2148 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-05-26T15:11:39.550+02:00  INFO 2148 --- [nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
 ```
 
 * Open browser with http://{RASPBERRY_PI_IP_ADDRESS}:8080/actuator/info
-  * Output on a PC:
-    pins-section):
+* Output on a Raspberry Pi 4 (but truncated the pins-section):
     ```json
     {
-        "os.name":"Mac OS X",
-        "os.architecture":"aarch64",
-        "os.version":"14.5",
-        "board.name":"UNKNOWN",
-        "board.description":"Unknown",
-        "board.model.label":"Unknown",
-        "board.cpu.label":"Unknown",
-        "board.soc":"UNKNOWN",
-        "java.version":"22",
-        "java.runtime":"22+36",
-        "java.vendor":"Azul Systems, Inc.",
-        "java.vendor.version":"Zulu22.28+91-CA",
-        "reading.volt.value":0.0,
-        "reading.temperature.celsius":0.0,
-        "reading.temperature.fahrenheit":32.0,
-        "reading.uptime":"16:26  up 13 days,  3:35, 1 user, load averages: 2.63 3.45 3.32",
-        "pi4jRegistry":{}
+      "pi4j.status.led": "HIGH",
+      "pi4j.status.button": "LOW",
+      "os.name": "Linux",
+      "os.architecture": "aarch64",
+      "os.version": "6.6.31+rpt-rpi-2712",
+      "board.name": "MODEL_5_B",
+      "board.description": "Raspberry Pi 5 Model B",
+      "board.model.label": "Model B",
+      "board.cpu.label": "Cortex-A76",
+      "board.soc": "BCM2712",
+      "java.version": "17.0.11",
+      "java.runtime": "17.0.11+9",
+      "java.vendor": "Eclipse Adoptium",
+      "java.vendor.version": "Temurin-17.0.11+9",
+      "reading.volt.value": 0.72,
+      "reading.temperature.celsius": 85.1,
+      "reading.temperature.fahrenheit": 185.18,
+      "reading.uptime": "18:26:04 up 33 min,  2 users,  load average: 2.31, 1.54, 1.09",
+      "platform.current": "RaspberryPi Platform",
+      "platform.raspberrypi.name": "RaspberryPi Platform",
+      "platform.raspberrypi.description": "Pi4J Platform for the RaspberryPi series of products.",
+      "provider.pigpio-spi.name": "PiGpio SPI Provider",
+      "provider.pigpio-spi.description": "com.pi4j.plugin.pigpio.provider.spi.PiGpioSpiProviderImpl",
+      "provider.pigpio-spi.type.name": "SPI",
+      "provider.gpiod-digital-output.name": "GpioD Digital Output (GPIO) Provider",
+      "provider.gpiod-digital-output.description": "com.pi4j.plugin.gpiod.provider.gpio.digital.GpioDDigitalOutputProviderImpl",
+      "provider.gpiod-digital-output.type.name": "DIGITAL_OUTPUT",
+      "provider.pigpio-serial.name": "PiGpio Serial Provider",
+      "provider.pigpio-serial.description": "com.pi4j.plugin.pigpio.provider.serial.PiGpioSerialProviderImpl",
+      "provider.pigpio-serial.type.name": "SERIAL",
+      "provider.linuxfs-pwm.name": "LinuxFS PWM Provider",
+      "provider.linuxfs-pwm.description": "com.pi4j.plugin.linuxfs.provider.pwm.LinuxFsPwmProviderImpl",
+      "provider.linuxfs-pwm.type.name": "PWM",
+      "provider.gpiod-digital-input.name": "GpioD Digital Input (GPIO) Provider",
+      "provider.gpiod-digital-input.description": "com.pi4j.plugin.gpiod.provider.gpio.digital.GpioDDigitalInputProviderImpl",
+      "provider.gpiod-digital-input.type.name": "DIGITAL_INPUT",
+      "provider.linuxfs-i2c.name": "LinuxFS I2C Provider",
+      "provider.linuxfs-i2c.description": "com.pi4j.plugin.linuxfs.provider.i2c.LinuxFsI2CProviderImpl",
+      "provider.linuxfs-i2c.type.name": "I2C",
+      "registry.button.name": "Press button",
+      "registry.button.type.name": "DIGITAL_INPUT",
+      "registry.button.description": "DIN-24",
+      "registry.dout-22.name": "DOUT-22",
+      "registry.dout-22.type.name": "DIGITAL_OUTPUT",
+      "registry.dout-22.description": "DOUT-22",
+      "registry.i2c-1@39.name": "PCF8574AT backed LCD@39",
+      "registry.i2c-1@39.type.name": "I2C",
+      "registry.i2c-1@39.description": "I2C-1.39"
     }
-    ```
-  * Output on a Raspberry Pi 4 (but truncated the pins-section):
-    ```json
-    TODO
     ```
 
 ## Notes

@@ -55,29 +55,24 @@ public class Pi4jActuatorConfiguration implements InfoContributor {
         builder.withDetail("reading.volt.value", boardReading.getVoltValue());
         builder.withDetail("reading.temperature.celsius", boardReading.getTemperatureInCelsius());
         builder.withDetail("reading.temperature.fahrenheit", boardReading.getTemperatureInFahrenheit());
-        builder.withDetail("reading.uptime", boardReading.getUptimeInfo());
+        builder.withDetail("reading.uptime", boardReading.getUptimeInfo().trim());
 
         try {
-            // TODO https://github.com/Pi4J/pi4j-springboot/issues/11
             builder.withDetail("platform.name", context.platform().name());
-            builder.withDetail("platform.value", context.platform().describe().value().toString());
         } catch (Exception ex) {
             logger.error("Could not return the Pi4J Default Platform: {}", ex.getMessage());
         }
 
         try {
-            // TODO https://github.com/Pi4J/pi4j-springboot/issues/11
             for (var entry : context.platforms().all().entrySet()) {
                 builder.withDetail("platform." + getAsKeyName(entry.getKey()) + ".name", entry.getValue().name());
                 builder.withDetail("platform." + getAsKeyName(entry.getKey()) + ".description", entry.getValue().description());
-                builder.withDetail("platform." + getAsKeyName(entry.getKey()) + ".value", entry.getValue().describe().value().toString());
             }
         } catch (Exception ex) {
             logger.error("Could not return the Pi4J Platforms: {}", ex.getMessage());
         }
 
         try {
-            // TODO https://github.com/Pi4J/pi4j-springboot/issues/11
             for (var entry : context.providers().all().entrySet()) {
                 builder.withDetail("provider." + getAsKeyName(entry.getKey()) + ".name", entry.getValue().name());
                 builder.withDetail("provider." + getAsKeyName(entry.getKey()) + ".description", entry.getValue().description());
@@ -90,12 +85,8 @@ public class Pi4jActuatorConfiguration implements InfoContributor {
         try {
             for (var entry : context.registry().all().entrySet()) {
                 builder.withDetail("registry." + getAsKeyName(entry.getKey()) + ".name", entry.getValue().name());
-                builder.withDetail("registry." + getAsKeyName(entry.getKey()) + ".config.name", entry.getValue().config().name());
-                builder.withDetail("registry." + getAsKeyName(entry.getKey()) + ".config.name", entry.getValue().config().platform());
-                builder.withDetail("registry." + getAsKeyName(entry.getKey()) + ".config.provider", entry.getValue().config().provider());
                 builder.withDetail("registry." + getAsKeyName(entry.getKey()) + ".type.name", entry.getValue().type().name());
                 builder.withDetail("registry." + getAsKeyName(entry.getKey()) + ".description", entry.getValue().description());
-                builder.withDetail("registry." + getAsKeyName(entry.getKey()) + ".value", entry.getValue().describe().value().toString());
             }
         } catch (Exception ex) {
             logger.error("Could not return the Pi4J Registry: {}", ex.getMessage());

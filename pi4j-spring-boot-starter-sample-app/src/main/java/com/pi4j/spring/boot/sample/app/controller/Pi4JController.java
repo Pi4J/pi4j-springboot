@@ -23,16 +23,19 @@ public class Pi4JController {
 
     @GetMapping("/led/{state}")
     public Boolean setLedStatus(@PathVariable Boolean state) {
+        logger.info("REST request to change the LED state to {}", state);
         return pi4JService.setLedState(state);
     }
 
     @GetMapping("/button")
     public DigitalState setLedStatus() {
+        logger.info("REST request to get the BUTTON state");
         return pi4JService.getButtonState();
     }
 
     @GetMapping("/lcd/{line}/{text}")
     public Boolean setLcdText(@PathVariable Integer line, @PathVariable String text) {
+        logger.info("REST request to set on line {} of the LCD: '{}'", line, text);
         return pi4JService.setLcdText(line, text);
     }
 }

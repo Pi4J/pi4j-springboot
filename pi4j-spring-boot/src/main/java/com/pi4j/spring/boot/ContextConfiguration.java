@@ -29,6 +29,9 @@ public class ContextConfiguration {
     public ContextConfiguration() {
         try {
             if (BoardInfoHelper.current().getBoardModel() == BoardModel.UNKNOWN) {
+                logger.warn("The Pi4J library could not detect that this system is a Raspberry Pi board.");
+                logger.warn("For this reason, Mock implementations will be loaded for all I/O.");
+                logger.warn("This means, you can test most functionality of the Pi4J library, but it will not try to interact with I/Os.");
                 this.pi4j = Pi4J.newContextBuilder()
                         .add(new MockPlatform())
                         .add(MockAnalogInputProvider.newInstance(),

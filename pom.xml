@@ -20,7 +20,7 @@
     <properties>
         <java.version>17</java.version>
         <spring-boot.version>3.2.5</spring-boot.version>
-        <pi4j.version>2.6.1</pi4j.version>
+        <pi4j.version>2.7.0</pi4j.version>
 
         <!-- Plugins -->
         <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>

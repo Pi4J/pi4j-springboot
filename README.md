@@ -24,6 +24,11 @@ This project provides a Spring Boot Starter to use the Pi4J V2 library in your S
     * After the application has launched, open a browser and check:
         * http://localhost:8080/actuator/health
         * http://localhost:8080/actuator/info
+    * Change the connected components:
+        * LED on: http://localhost:8080/api/pi4j/led/true
+        * LED off: http://localhost:8080/api/pi4j/led/false
+        * Get the button state: http://localhost:8080/api/pi4j/button
+        * Set text on the LCD: http://localhost:8080/api/pi4j/lcd/0/test
 
 ## Running the sample application on a Raspberry Pi
 
@@ -67,6 +72,26 @@ $ sudo ~/.sdkman/candidates/java/19.0.2-zulu/bin/java -jar pi4j-spring-boot-star
 
 ```shell
 
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.5)
+
+[pi4j-spring-boot-sample-app] [           main] c.p.spring.boot.sample.app.Application   : Starting Application using Java 22.0.2 with PID 62220 (/Users/frank/Documents/GitHub/pi4j-springboot/pi4j-spring-boot-starter-sample-app/target/classes started by frank in /Users/frank/Documents/GitHub/pi4j-springboot)
+[pi4j-spring-boot-sample-app] [           main] c.p.spring.boot.sample.app.Application   : No active profile set, falling back to 1 default profile: "default"
+[pi4j-spring-boot-sample-app] [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+[pi4j-spring-boot-sample-app] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+[pi4j-spring-boot-sample-app] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.20]
+[pi4j-spring-boot-sample-app] [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+[pi4j-spring-boot-sample-app] [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 375 ms
+[pi4j-spring-boot-sample-app] [           main] com.pi4j.Pi4J                            : New auto context
+[pi4j-spring-boot-sample-app] [           main] com.pi4j.Pi4J                            : New context builder
+[pi4j-spring-boot-sample-app] [           main] c.pi4j.boardinfo.util.BoardInfoHelper    : Detected OS: Name: Mac OS X, version: 15.0, architecture: aarch64
+[pi4j-spring-boot-sample-app] [           main] c.pi4j.boardinfo.util.BoardInfoHelper    : Detected Java: Version: 22.0.2, runtime: 22.0.2+9, vendor: Azul Systems, Inc., vendor version: Zulu22.32+15-CA
+...
 ```
 
 * Open browser with http://{RASPBERRY_PI_IP_ADDRESS}:8080/actuator/info
@@ -133,6 +158,5 @@ $ sudo ~/.sdkman/candidates/java/19.0.2-zulu/bin/java -jar pi4j-spring-boot-star
 
 This project was started by Daniel Frey and got further improved by DaShaun Carter during a few live-coding sessions:
 
-1. TODO link to first Twitch
-2. [Working on Pi4J Spring Boot](https://www.twitch.tv/videos/1828406758)
-3. [Spring Boot Pi4J Starter :: Testing my PR](https://www.twitch.tv/videos/1829189803)
+1. [Working on Pi4J Spring Boot](https://www.twitch.tv/videos/1828406758)
+1. [Spring Boot Pi4J Starter :: Testing my PR](https://www.twitch.tv/videos/1829189803)

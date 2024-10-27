@@ -25,7 +25,11 @@ jobs:
           java-version: 17
           distribution: 'zulu'
 
+      # Ensure Maven wrapper is executable
+      - name: Make Maven Wrapper executable
+        run: chmod +x ./mvnw
+
       # Build and run tests
       - name: Maven package
         run: |
-          mvn -ntp -B package
+          ./mvnw -ntp -B package

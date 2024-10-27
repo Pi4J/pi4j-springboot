@@ -22,7 +22,7 @@ class ContextTest {
     }
 
     @Test
-    void boardUnkownIfNotRunningOnPi() {
+    void boardUnknownIfNotRunningOnPi() {
         String osName = System.getProperty("os.name").toLowerCase();
         String osArch = System.getProperty("os.arch").toLowerCase();
         if (osName.contains("linux") && osArch.contains("arm")) {

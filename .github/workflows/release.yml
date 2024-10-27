@@ -25,11 +25,15 @@ jobs:
           java-version: 17
           distribution: 'zulu'
 
+      # Ensure Maven wrapper is executable
+      - name: Make Maven Wrapper executable
+        run: chmod +x ./mvnw
+
       # Prepare for upload to Maven Central
       # https://jreleaser.org/guide/latest/examples/maven/staging-artifacts.html
       - name: Build for release
         run: |
-          mvn -ntp -B -Ppublication deploy -DaltDeploymentRepository=local::file:./target/staging-deploy
+          ./mvnw -ntp -B -Ppublication deploy -DaltDeploymentRepository=local::file:./target/staging-deploy
 
       - name: List files staged for release
         run: |
@@ -45,7 +49,7 @@ jobs:
           JRELEASER_GPG_PUBLIC_KEY: ${{ secrets.JRELEASER_GPG_PUBLIC_KEY }}
           JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          mvn -ntp -B jreleaser:config
+          ./mvnw -ntp -B jreleaser:config
 
       # Only release when approved
       - name: Get release approval
@@ -65,4 +69,4 @@ jobs:
           JRELEASER_GPG_PUBLIC_KEY: ${{ secrets.JRELEASER_GPG_PUBLIC_KEY }}
           JRELEASER_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          mvn -ntp -B jreleaser:full-release
+          ./mvnw -ntp -B jreleaser:full-release

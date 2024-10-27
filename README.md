@@ -160,4 +160,4 @@ $ sudo ~/.sdkman/candidates/java/17.0.7-zulu/bin/java -jar pi4j-spring-boot-star
 This project was started by Daniel Frey and got further improved by DaShaun Carter during a few live-coding sessions:
 
 1. [Working on Pi4J Spring Boot](https://www.twitch.tv/videos/1828406758)
-1. [Spring Boot Pi4J Starter :: Testing my PR](https://www.twitch.tv/videos/1829189803)
+2. [Spring Boot Pi4J Starter :: Testing my PR](https://www.twitch.tv/videos/1829189803)

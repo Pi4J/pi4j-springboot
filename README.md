@@ -56,7 +56,8 @@ $ sdk install java 17.0.7-zulu
 ```shell
 $ git clone https://github.com/Pi4J/pi4j-springboot.git
 $ cd pi4j-springboot
-$ mvn package
+$ chmod +x mvnw
+$ ./mvnw package
 ```
 
 * Run it as sudo to make sure Pi4J starts correctly.
@@ -65,7 +66,7 @@ $ mvn package
 $ sudo java -jar pi4j-spring-boot-starter-sample-app/target/pi4j-spring-boot-starter-sample-app-0.0.1.ea.jar 
 
 # Or when installed with SDKMAN
-$ sudo ~/.sdkman/candidates/java/19.0.2-zulu/bin/java -jar pi4j-spring-boot-starter-sample-app/target/pi4j-spring-boot-starter-sample-app-0.0.1.ea.jar
+$ sudo ~/.sdkman/candidates/java/17.0.7-zulu/bin/java -jar pi4j-spring-boot-starter-sample-app/target/pi4j-spring-boot-starter-sample-app-0.0.1.ea.jar
 ```
 
 * Check the output of the application:
@@ -94,7 +95,7 @@ $ sudo ~/.sdkman/candidates/java/19.0.2-zulu/bin/java -jar pi4j-spring-boot-star
 ...
 ```
 
-* Open browser with http://{RASPBERRY_PI_IP_ADDRESS}:8080/actuator/info
+* Open browser with `http://{RASPBERRY_PI_IP_ADDRESS}:8080/actuator/info`
 * Output on a Raspberry Pi 4 (but truncated the pins-section):
     ```json
     {
@@ -159,4 +160,4 @@ $ sudo ~/.sdkman/candidates/java/19.0.2-zulu/bin/java -jar pi4j-spring-boot-star
 This project was started by Daniel Frey and got further improved by DaShaun Carter during a few live-coding sessions:
 
 1. [Working on Pi4J Spring Boot](https://www.twitch.tv/videos/1828406758)
-1. [Spring Boot Pi4J Starter :: Testing my PR](https://www.twitch.tv/videos/1829189803)
+2. [Spring Boot Pi4J Starter :: Testing my PR](https://www.twitch.tv/videos/1829189803)

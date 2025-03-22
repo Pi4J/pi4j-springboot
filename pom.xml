@@ -7,25 +7,47 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.4</version>
+        <version>3.4.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <groupId>com.pi4j</groupId>
     <artifactId>pi4j-springboot</artifactId>
-    <version>0.0.1.ea</version>
+    <version>0.0.1</version>
     <name>Pi4J Spring Boot Project</name>
     <packaging>pom</packaging>
 
     <properties>
-        <java.version>17</java.version>
-        <spring-boot.version>3.3.4</spring-boot.version>
-        <pi4j.version>2.7.0</pi4j.version>
+        <java.version>21</java.version>
+
+        <!-- Dependencies -->
+        <spring-boot.version>3.4.4</spring-boot.version>
+        <pi4j.version>3.0.0-SNAPSHOT</pi4j.version>
 
         <!-- Plugins -->
-        <jacoco-maven-plugin.version>0.8.12</jacoco-maven-plugin.version>
-        <jreleaser.version>1.14.0</jreleaser.version>
+        <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
+        <jreleaser.version>1.3.1</jreleaser.version>
+        <maven.compiler.plugin.version>3.14.0</maven.compiler.plugin.version>
+        <maven.deploy.plugin.version>3.1.4</maven.deploy.plugin.version>
+        <maven.jar.plugin.version>3.4.2</maven.jar.plugin.version>
+        <maven.javadoc.plugin.version>3.11.2</maven.javadoc.plugin.version>
+        <maven.source.plugin.version>3.3.1</maven.source.plugin.version>
+        <maven.surefire.plugin.version>3.5.2</maven.surefire.plugin.version>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>oss-snapshots-repo</id>
+            <name>Sonatype OSS Maven Repository</name>
+            <url>https://oss.sonatype.org/content/groups/public</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <scm>
         <developerConnection>scm:git:ssh://git@github.com:Pi4J/pi4j-springboot.git</developerConnection>
@@ -51,14 +73,16 @@
                 <artifactId>pi4j-core</artifactId>
                 <version>${pi4j.version}</version>
             </dependency>
+            <!-- Pi4J plugin for Raspberry Pi -->
             <dependency>
                 <groupId>com.pi4j</groupId>
                 <artifactId>pi4j-plugin-raspberrypi</artifactId>
                 <version>${pi4j.version}</version>
             </dependency>
+            <!-- Pi4J plugins for non-Raspberry Pi -->
             <dependency>
                 <groupId>com.pi4j</groupId>
-                <artifactId>pi4j-plugin-pigpio</artifactId>
+                <artifactId>pi4j-plugin-gpiod</artifactId>
                 <version>${pi4j.version}</version>
             </dependency>
             <dependency>
@@ -68,9 +92,10 @@
             </dependency>
             <dependency>
                 <groupId>com.pi4j</groupId>
-                <artifactId>pi4j-plugin-gpiod</artifactId>
+                <artifactId>pi4j-plugin-pigpio</artifactId>
                 <version>${pi4j.version}</version>
             </dependency>
+            <!-- Pi4J plugin for testing on non-Raspberry Pi -->
             <dependency>
                 <groupId>com.pi4j</groupId>
                 <artifactId>pi4j-plugin-mock</artifactId>
@@ -84,28 +109,28 @@
             <plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-deploy-plugin</artifactId>
-                    <version>3.6.3</version>
-                </plugin>
-                <plugin>
-                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.13.0</version>
+                    <version>${maven.compiler.plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>3.10.1</version>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>${maven.deploy.plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>3.4.2</version>
+                    <version>${maven.jar.plugin.version}</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
-                    <artifactId>maven-sources-plugin</artifactId>
-                    <version>3.15.0</version>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>${maven.javadoc.plugin.version}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>${maven.source.plugin.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
@@ -115,7 +140,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <!-- JUnit 5 requires Surefire version 2.22.0 or higher -->
-                <version>2.22.2</version>
+                <version>${maven.surefire.plugin.version}</version>
             </plugin>
 
             <plugin>
@@ -182,7 +207,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-source-plugin</artifactId>
-                        <version>3.3.1</version>
+                        <version>${maven.source.plugin.version}</version>
                         <executions>
                             <execution>
                                 <id>attach-sources</id>

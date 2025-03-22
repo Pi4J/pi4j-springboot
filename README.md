@@ -8,11 +8,12 @@
 
 ---
 
-This project provides a Spring Boot Starter to use the Pi4J V2 library in your Spring Boot project.
+This project provides a Spring Boot Starter to use the Pi4J library in your Spring Boot project and control electronic
+components connected to the GPIO pins of a Raspberry Pi.
 
 ## About this project
 
-* This starter requires Java 17 or higher.
+* This starter requires **Java 21 or higher**.
 * Multi-module project:
     * pi4j-spring-boot: auto-configure module
     * pi4j-spring-boot-starter: starter module
@@ -32,14 +33,15 @@ This project provides a Spring Boot Starter to use the Pi4J V2 library in your S
 
 ## Running the sample application on a Raspberry Pi
 
-* Start from Raspberry Pi OS or [Pi4J CrowPi OS 0.2.0](https://pi4j.com/getting-started/crowpi/crowpi-os/).
-* Check the Java version, should be 17 or newer.
+* Start from Raspberry Pi OS
+  and install Java and Maven, or [follow the instructions on the Pi4J website](https://www.pi4j.com/prepare/).
+* Check the Java version, should be 21 or newer.
 
 ```shell
 $ java -version
-openjdk version "17.0.4" 2022-07-19
-OpenJDK Runtime Environment (build 17.0.4+8-Debian-1deb11u1)
-OpenJDK 64-Bit Server VM (build 17.0.4+8-Debian-1deb11u1, mixed mode, sharing)
+openjdk version "21.0.6" 2025-01-21 LTS
+OpenJDK Runtime Environment Zulu21.40+17-CA (build 21.0.6+7-LTS)
+OpenJDK 64-Bit Server VM Zulu21.40+17-CA (build 21.0.6+7-LTS, mixed mode, sharing)
 ```
 
 * If Java is not installed yet, use SDKMAN.
@@ -48,7 +50,7 @@ OpenJDK 64-Bit Server VM (build 17.0.4+8-Debian-1deb11u1, mixed mode, sharing)
 $ sudo apt install zip
 $ curl -s "https://get.sdkman.io" | bash 
 # Open new terminal
-$ sdk install java 17.0.7-zulu
+$ sdk install java 21.0.6-zulu
 ```
 
 * Get this project from GitHub and package it.
@@ -60,13 +62,17 @@ $ chmod +x mvnw
 $ ./mvnw package
 ```
 
-* Run it as sudo to make sure Pi4J starts correctly.
+* Depending on the type of board, you may need to start the application with `sudo`. This depends on which type of I/Os
+  you use and the Pi4J providers which are used.
+  See [Choosing an I/O Provider](https://www.pi4j.com/documentation/providers/) for more info
+  about the providers. All the providers are included in this Spring Boot Starter and during startup of the application,
+  you can see in the logging which get loaded based on the type of board.
 
 ```shell
-$ sudo java -jar pi4j-spring-boot-starter-sample-app/target/pi4j-spring-boot-starter-sample-app-0.0.1.ea.jar 
+$ sudo java -jar target/pi4j-spring-boot-starter-sample-app-0.0.1.jar 
 
 # Or when installed with SDKMAN
-$ sudo ~/.sdkman/candidates/java/17.0.7-zulu/bin/java -jar pi4j-spring-boot-starter-sample-app/target/pi4j-spring-boot-starter-sample-app-0.0.1.ea.jar
+$ sudo ~/.sdkman/candidates/java/19.0.2-zulu/bin/java -jar target/pi4j-spring-boot-starter-sample-app-0.0.1.jar
 ```
 
 * Check the output of the application:

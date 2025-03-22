@@ -166,7 +166,7 @@ $ sudo ~/.sdkman/candidates/java/19.0.2-zulu/bin/java -jar target/pi4j-spring-bo
 This project was started by [Daniel Frey](https://github.com/dmfrey) and got further improved
 by [DaShaun Carter](https://github.com/dashaun) and
 [Frank Delporte](https://github.com/FDelporte) during a few
-live-coding sessions. The Maven wrapper was added by [Dariusz Zbyrad](https://github.com/dariuszzbyrad).
+live-streaming-coding sessions. The Maven wrapper was added by [Dariusz Zbyrad](https://github.com/dariuszzbyrad).
 
 1. [2023-05-24 - Setting up pi4j-springboot (DaShaun)](https://www.youtube.com/watch?v=RH80giE7FKI)
 1. [2023-05-25 - Spring Boot Pi4J Starter :: Testing my PR (DaShaun)](https://www.youtube.com/watch?v=1bCyGvdmRvI)

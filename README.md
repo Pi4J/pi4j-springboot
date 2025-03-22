@@ -163,7 +163,14 @@ $ sudo ~/.sdkman/candidates/java/19.0.2-zulu/bin/java -jar target/pi4j-spring-bo
 
 ## Thanks to
 
-This project was started by Daniel Frey and got further improved by DaShaun Carter during a few live-coding sessions:
+This project was started by [Daniel Frey](https://github.com/dmfrey) and got further improved
+by [DaShaun Carter](https://github.com/dashaun) and
+[Frank Delporte](https://github.com/FDelporte) during a few
+live-coding sessions. The Maven wrapper was added by [Dariusz Zbyrad](https://github.com/dariuszzbyrad).
 
-1. [Working on Pi4J Spring Boot](https://www.twitch.tv/videos/1828406758)
-2. [Spring Boot Pi4J Starter :: Testing my PR](https://www.twitch.tv/videos/1829189803)
+1. [2023-05-24 - Setting up pi4j-springboot (DaShaun)](https://www.youtube.com/watch?v=RH80giE7FKI)
+1. [2023-05-25 - Spring Boot Pi4J Starter :: Testing my PR (DaShaun)](https://www.youtube.com/watch?v=1bCyGvdmRvI)
+2. [2024-06-11 - Pi4J Spring Boot Starter (DaShaun and Frank)](https://www.youtube.com/watch?v=I62IviQLNts)
+
+More about Java on Raspberry Pi and embedded
+in [this Foojay Podcast: Embedded Java, Part 2: Java on Raspberry Pi, ARM, Risc-V, from small computers to the cloud (#55)](https://www.youtube.com/watch?v=FoTyfWogspI)

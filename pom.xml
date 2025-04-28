@@ -22,7 +22,7 @@
 
         <!-- Dependencies -->
         <spring-boot.version>3.4.4</spring-boot.version>
-        <pi4j.version>3.0.0-SNAPSHOT</pi4j.version>
+        <pi4j.version>3.0.1</pi4j.version>
 
         <!-- Plugins -->
         <jacoco-maven-plugin.version>0.8.10</jacoco-maven-plugin.version>
